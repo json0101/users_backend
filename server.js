@@ -1,6 +1,7 @@
 const express = require('express');
 const app  = express();
 const bodyParser = require('body-parser');
+require('./server/config/config.js');
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -19,6 +20,8 @@ app.get('/', function(req, res) {
     res.send('Users Rest Api');
 });
 
-app.listen(3500, function() {
-    console.log("Escuchando el puerto 3500");
+const port = process.env.PORT;
+
+app.listen(port, function() {
+    console.log("Escuchando el puerto "+ port);
 });
